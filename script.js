@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+alert('Welcome to the Rock, Paper & Scissors game. Please check the console for the results!');
 function getComputerChoice(){
     choice = Math.floor(Math.random() * 3);
     if (choice == 0){
