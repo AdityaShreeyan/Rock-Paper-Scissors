@@ -33,7 +33,7 @@ function playRound(humanChoice,computerChoice){
         || humanChoice == 'Paper' && computerChoice == 'Rock')
     {
         humanScore += 1;
-        return ("You win! " + humanChoice + " beats " + computerChoice);
+        return (`You win! ${humanChoice} beats ${computerChoice}`);
     }
     else if (humanChoice === computerChoice){
         return ("It's a draw!");
@@ -43,7 +43,7 @@ function playRound(humanChoice,computerChoice){
     }
     else {
         computerScore += 1;
-        return ("You lose! " + computerChoice + " beats " + humanChoice);
+        return (`You lose! ${computerChoice} beats ${humanChoice}`);
     }
 }
 function playGame(){
@@ -61,7 +61,7 @@ function playGame(){
         console.log("Congratulations! You have beaten the computer!")
     }
     else if (humanScore === computerScore){
-        console.log("It's a draw!");
+        console.log("The result of the match is a DRAW!");
     }
     else {
         console.log("You lost.. Better luck next time!");
