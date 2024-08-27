@@ -29,7 +29,7 @@ function getHumanChoice(){
     else {
         alert ("Invalid choice! Please enter Rock, Paper or Scissors.");
     }
-} while (choice !='rock' || choice !='paper' || choice !='scissor' || choice != 'scissors');
+} while (choice !='rock' && choice !='paper' && choice !='scissor' && choice != 'scissors');
 }
 function playRound(humanChoice,computerChoice){
     if (humanChoice == 'Rock' && computerChoice == 'Scissors'
