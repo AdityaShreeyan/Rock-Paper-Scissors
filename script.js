@@ -14,7 +14,9 @@ function getComputerChoice(){
     }
 }
 function getHumanChoice(){
-    let choice = prompt('Rock, Paper or Scissors? Pick one!',"").toLowerCase();
+    let choice; 
+    do {
+        choice = prompt('Rock, Paper or Scissors? Pick one!',"").toLowerCase();
     if (choice == 'rock'){
         return ("Rock");
     }
@@ -25,8 +27,9 @@ function getHumanChoice(){
         return ("Scissors");
     }
     else {
-        return (`Invalid!`);
+        alert ("Invalid choice! Please enter Rock, Paper or Scissors.");
     }
+} while (choice !='rock' || choice !='paper' || choice !='scissor' || choice != 'scissors');
 }
 function playRound(humanChoice,computerChoice){
     if (humanChoice == 'Rock' && computerChoice == 'Scissors'
