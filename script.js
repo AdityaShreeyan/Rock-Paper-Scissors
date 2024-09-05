@@ -12,6 +12,7 @@ function getComputerChoice(){
     }
 }
 
+//Initializing Game Scores to 0 before the match starts.
 let humanScore = 0;
 let computerScore = 0;
 
