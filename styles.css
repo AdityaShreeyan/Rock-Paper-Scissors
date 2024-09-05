@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:enabled:hover {
+    background-color: #d3d3d3;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    color: #a0a0a0;
+    background-color: #e0e0e0;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+}
