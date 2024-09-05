@@ -33,6 +33,13 @@ button i {
 }
 
 @media (max-width: 600px){
+    .line-1, .line-2{
+        display:block;
+        font-size:15px;
+    }
+    h1 {
+        text-align: center;
+    }
     #result {
         font-size: 12px;
     }
@@ -42,6 +49,13 @@ button i {
 }
 
 @media (max-width: 450px){
+    .line-1, .line-2{
+        display:block;
+        font-size:12px;
+    }
+    h1 {
+        text-align: center;
+    }
     #result {
         font-size: 8px;
     }
