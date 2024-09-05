@@ -1,6 +1,4 @@
-let humanScore = 0;
-let computerScore = 0;
-alert('Welcome to the Rock, Paper & Scissors game. Please check the console for the results!');
+//Function to get a random choice for the computer.
 function getComputerChoice(){
     choice = Math.floor(Math.random() * 3);
     if (choice == 0){
@@ -13,24 +11,11 @@ function getComputerChoice(){
         return ("Scissors");
     }
 }
-function getHumanChoice(){
-    let choice; 
-    do {
-        choice = prompt('Rock, Paper or Scissors? Pick one!',"").toLowerCase();
-    if (choice == 'rock'){
-        return ("Rock");
-    }
-    else if (choice == 'paper'){
-        return ("Paper");
-    }
-    else if (choice == 'scissors' || choice == 'scissor'){
-        return ("Scissors");
-    }
-    else {
-        alert ("Invalid choice! Please enter Rock, Paper or Scissors.");
-    }
-} while (choice !='rock' && choice !='paper' && choice !='scissor' && choice != 'scissors');
-}
+
+let humanScore = 0;
+let computerScore = 0;
+
+//Function for playing a round and adding the score to the winner as well as displaying who won.
 function playRound(humanChoice,computerChoice){
     if (humanChoice == 'Rock' && computerChoice == 'Scissors'
         || humanChoice == 'Scissors' && computerChoice == 'Paper'
@@ -42,33 +27,68 @@ function playRound(humanChoice,computerChoice){
     else if (humanChoice === computerChoice){
         return ("It's a draw!");
     }
-    else if (humanChoice === "Invalid!"){
-        return ("Please enter a valid choice!");
-    }
     else {
         computerScore += 1;
         return (`You lose! ${computerChoice} beats ${humanChoice}`);
     }
 }
-function playGame(){
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        console.log(`Round ${i + 1}`);
-        console.log(`Your choice: ${humanSelection}`);
-        console.log(`Computer's choice: ${computerSelection}`);
-        console.log(playRound(humanSelection, computerSelection));
-        console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
-        console.log('-----------------------------------');
+
+const result = document.querySelector('#result');
+//Create new P elements to hold round result and round score.
+const roundResult = document.createElement('h2');
+const roundChoice = document.createElement('p');
+const roundScore = document.createElement('p');
+//Append the current round result as well as round score to the #result container.
+result.appendChild(roundResult);  
+result.appendChild(roundChoice);
+result.appendChild(roundScore);
+
+//Function to handle Click events on all three buttons.
+function handleClick(playerSelection) {
+    const computerSelection = getComputerChoice();
+
+    //Updates the text on screen to display the result and current score.
+    roundResult.textContent = playRound(playerSelection, computerSelection);
+    roundChoice.textContent = `You chose: ${playerSelection} || Computer chose: ${computerSelection}`;
+    roundScore.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+
+    //Decides the final winner.
+    if ( humanScore === 5 || computerScore === 5){
+    
+        if ( humanScore == 5){
+        const finalResult = document.createElement('h3');
+        let pointDifference = humanScore - computerScore;
+        //The Ternary ? : operator checks if the point difference is 1 and accordingly changes the plural form of points.
+        finalResult.textContent = `You've won the match! The computer lost by ${pointDifference} ${pointDifference === 1 ? 'point!' : 'points.'}`;
+        result.appendChild(finalResult);
         }
-    if (humanScore > computerScore){
-        console.log("Congratulations! You have beaten the computer!")
-    }
-    else if (humanScore === computerScore){
-        console.log("The result of the match is a DRAW!");
-    }
-    else {
-        console.log("You lost.. Better luck next time!");
+    
+        else if ( computerScore == 5){
+        const finalResult = document.createElement('h3');
+        let pointDifference = computerScore - humanScore;
+        //The Ternary ? : operator checks if the point difference is 1 and accordingly changes the plural form of points.
+        finalResult.textContent = `You've lost the match! The computer won by ${pointDifference} ${pointDifference === 1 ? 'point!' : 'points.'}`;
+        result.appendChild(finalResult);
+        }
+
+        //Disables all the choice buttons after one of the players has won.
+        document.querySelectorAll('button').forEach(button => {
+            button.disabled = true;
+        })
+
+        //Creating a restart button after one of the players has won.
+        resetGame = document.createElement('button');
+        resetGame.textContent = 'Play again';
+        resetGame.addEventListener('click', function(){
+            location.reload();
+        })
+        result.appendChild(resetGame);
 }
 }
-playGame();
+
+//This function selects all buttons and adds an EventListener to them.
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', function() {
+        handleClick(button.id);  // button.id will select 'Rock' 'Paper' or 'Scissors' based on the button that was clicked.
+    });
+});
