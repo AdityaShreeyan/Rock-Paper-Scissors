@@ -48,6 +48,11 @@ button i {
     }
 }
 
+@media (max-width: 753px){
+    .line-1, .line2{
+        display:block;
+    }
+}
 @media (max-width: 450px){
     .line-1, .line-2{
         display:block;
