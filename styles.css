@@ -33,12 +33,18 @@ button i {
 }
 
 @media (max-width: 600px){
+    #result {
+        font-size: 12px;
+    }
     body {
         font-size: 12px;
     }
 }
 
 @media (max-width: 450px){
+    #result {
+        font-size: 8px;
+    }
     body {
         font-size: 8px;
     }
