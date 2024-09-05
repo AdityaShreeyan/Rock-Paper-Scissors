@@ -49,8 +49,8 @@ function handleClick(playerSelection) {
 
     //Updates the text on screen to display the result and current score.
     roundResult.textContent = playRound(playerSelection, computerSelection);
-    roundChoice.textContent = `You chose: ${playerSelection} || Computer chose: ${computerSelection}`;
-    roundScore.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+    roundChoice.textContent = roundChoice.textContent = `You chose: ${playerSelection} \u00A0\u00A0\u00A0 Computer chose: ${computerSelection}`;
+    roundScore.textContent = `Your Score: ${humanScore} \u00A0\u00A0\u00A0 Computer Score: ${computerScore}`;
 
     //Decides the final winner.
     if ( humanScore === 5 || computerScore === 5){
